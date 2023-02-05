@@ -28,9 +28,7 @@ export default function StoreList({ data }: StoreListProps) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {modalOpen && (
-        <StoreModal data={data[clicked]} setModalOpen={setModalOpen} />
-      )}
+      {modalOpen && <StoreModal id={clicked} setModalOpen={setModalOpen} />}
       <Grid
         container
         direction="row"

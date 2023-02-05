@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Modal from "../common/Modal";
 import Image from "next/image";
 import Grid from "@mui/material/Grid";
@@ -8,18 +9,36 @@ import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 
 interface StoreModalProps {
-  data: {
-    id: number;
-    name: string;
-    url: string;
-    description: string;
-    image: string;
-    thumb: string;
-  };
+  id: number;
   setModalOpen: (state: boolean) => void;
 }
 
-export default function StoreModal({ data, setModalOpen }: StoreModalProps) {
+interface Data {
+  id: number;
+  name: string;
+  url: string;
+  description: string;
+  image: string;
+  thumb: string;
+}
+
+export default function StoreModal({ id, setModalOpen }: StoreModalProps) {
+  const [data, setData] = useState<null | Data>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`http://localhost:9000/stores/${id + 1}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return null;
+  if (!data) return null;
+
   return (
     <Modal setModalOpen={setModalOpen}>
       <Grid item>
@@ -28,7 +47,7 @@ export default function StoreModal({ data, setModalOpen }: StoreModalProps) {
       <Grid item>
         <Container maxWidth="sm">
           <Typography variant="h4" component="h1" color="primary">
-            {data.name.toUpperCase()}
+            {data.name}
           </Typography>
           <Textarea value={data.description} disabled />
           {data.url && (
