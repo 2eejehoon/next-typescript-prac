@@ -8,6 +8,8 @@ import Link from "../common/Link";
 import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 
+const BASE_URL = "http://localhost:9000";
+
 interface StoreModalProps {
   id: number;
   setModalOpen: (state: boolean) => void;
@@ -28,7 +30,7 @@ export default function StoreModal({ id, setModalOpen }: StoreModalProps) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:9000/stores/${id + 1}`)
+    fetch(`${BASE_URL}/stores/${id + 1}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -42,12 +44,12 @@ export default function StoreModal({ id, setModalOpen }: StoreModalProps) {
   return (
     <Modal setModalOpen={setModalOpen}>
       <Grid item>
-        <Image src={data.image} width={280} height={280} alt={data.name} />
+        <Image src={data.image} width={300} height={300} alt={data.name} />
       </Grid>
       <Grid item>
         <Container maxWidth="sm">
           <Typography variant="h4" component="h1" color="primary">
-            {data.name}
+            {data.name.toUpperCase()}
           </Typography>
           <Textarea value={data.description} disabled />
           {data.url && (
@@ -56,6 +58,7 @@ export default function StoreModal({ id, setModalOpen }: StoreModalProps) {
               component={Link}
               size="large"
               href={data.url}
+              target={"_blank"}
               sx={{ color: "black" }}
             >
               홈페이지 바로가기
@@ -73,8 +76,9 @@ const Textarea = styled.textarea`
   border: none;
   resize: none;
   width: 30vw;
-  min-width: 280px;
-  min-height: 280px;
+  height: 25vh;
+  min-width: 300px;
+  min-height: 300px;
   overflow: hidden;
   background-color: white;
 `;

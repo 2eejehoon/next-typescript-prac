@@ -25,8 +25,9 @@ export default function NotFound() {
       <Typography
         variant="h6"
         component="h2"
+        color="gray"
         gutterBottom
-        sx={{ textAlign: "center", color: "gray" }}
+        sx={{ textAlign: "center" }}
       >
         요청한 페이지를 찾을 수 없습니다.
         <br />

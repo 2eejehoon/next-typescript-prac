@@ -1,4 +1,5 @@
-import { Container, Typography } from "@mui/material";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 export default function About() {
   return (
@@ -23,16 +24,18 @@ function Desc() {
       <Typography
         variant="h6"
         component="h2"
+        color="gray"
         gutterBottom
-        sx={{ color: "gray", textAlign: "center" }}
+        sx={{ textAlign: "center" }}
       >
         먹는 것에 진심인 사람들을 위한 맛집을 소개합니다.
       </Typography>
       <Typography
         variant="h6"
         component="p"
+        color="black"
         gutterBottom
-        sx={{ color: "black", textAlign: "center" }}
+        sx={{ textAlign: "center" }}
       >
         믿을 수 있는 정보로 검증된 맛집을 추천하는 서비스를 만들겠습니다.
       </Typography>

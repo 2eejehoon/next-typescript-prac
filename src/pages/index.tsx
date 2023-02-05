@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Image from "next/image";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
 export default function Home() {
   return (
@@ -9,6 +12,38 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="md">
+        <Desc />
+      </Container>
+    </>
+  );
+}
+
+function Desc() {
+  return (
+    <>
+      <Typography
+        variant="h3"
+        component="h1"
+        color="purple"
+        gutterBottom
+        sx={{ textAlign: "center", fontWeight: "bold" }}
+      >
+        프론트엔드 테스트
+      </Typography>
+      <Typography
+        variant="h6"
+        component="h2"
+        color="black"
+        gutterBottom
+        sx={{ textAlign: "center" }}
+      >
+        안녕하세요, 겨울인턴 프론트엔드 지원자 이제훈입니다.
+        <br />
+        TypeScript, React, Next js, Material UI 사용하여 제작했습니다.
+        <br />
+        감사합니다.
+      </Typography>
     </>
   );
 }

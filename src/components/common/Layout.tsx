@@ -2,7 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import React from "react";
 import Box from "@mui/material/Box";
-import { CssBaseline } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 
 interface LayoutProps {
   children: React.ReactNode;
